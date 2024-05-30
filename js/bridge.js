@@ -91,7 +91,9 @@ function rangeEvents() {
 
 function mouseMoveEvents() {
     document.addEventListener('mousedown', (event) => {
-        if (event.button === 1) {  // Middle mouse button
+        if (event.button === 1) {  // Left mouse button
+            isRotating = true;
+        } else if (event.button === 0) {  // Middle mouse button
             isRotating = true;
         } else if (event.button === 2) {  // Right mouse button
             isPanning = true;
