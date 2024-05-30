@@ -6,6 +6,7 @@ uniform vec4 resolution;
 uniform float u_rotationX;
 uniform float u_rotationY;
 uniform vec3 cameraAdjPos;
+uniform float blending;
 
 uniform sampler2D matcap;
 

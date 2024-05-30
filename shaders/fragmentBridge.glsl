@@ -8,6 +8,7 @@ uniform vec4 resolution;
 uniform float u_rotationX;
 uniform float u_rotationY;
 uniform vec3 cameraAdjPos;
+uniform float blending;
 
 uniform sampler2D matcap;
 
@@ -83,8 +84,8 @@ vec3 translate(vec3 p, vec3 offset) {
 
 float sdf(vec3 p) {
     float radius = 0.05;
-    float blend = 0.005;
-    //float blend = 0.1;
+    //float blend = 0.005;
+    float blend = blending;
     float bridgeWidth = 0.5;
 
     //p = opCheapBend(p);
@@ -138,7 +139,7 @@ float rayMarch(vec3 rayOrigin, vec3 ray) {
 
 void main() {
     vec2 newUV = (vUv - vec2(0.5)) * resolution.zw + vec2(0.5);
-    vec3 cameraPos = vec3(0.0, 0.0, 5.0);
+    vec3 cameraPos = vec3(0.0, 0.0, 8.0);
     cameraPos = cameraPos + cameraAdjPos;
     vec3 ray = normalize(vec3((vUv - vec2(0.5)) * resolution.zw, -1));
     vec3 color = vec3(1.0);

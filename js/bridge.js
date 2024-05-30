@@ -15,19 +15,22 @@ animate();
 
 
 function init() {
-    width = window.innerWidth;
-    height = window.innerHeight;
+    renderer = new THREE.WebGLRenderer();
+    const container = document.getElementById('bridgeContainer');
+    width = container.clientWidth;
+    height = container.clientHeight;
+
+    renderer.setSize(width, height);
+    container.appendChild(renderer.domElement);
 
     scene = new THREE.Scene();
     clock = new THREE.Clock();
 
-    renderer = new THREE.WebGLRenderer();
-    renderer.setSize(width, height);
-    document.body.appendChild(renderer.domElement);
-
     var frustumSize = 1;
     camera = new THREE.OrthographicCamera(frustumSize/-2, frustumSize/2, frustumSize/2, frustumSize/-2, -1000, 1000);
     camera.position.set(0, 0, 2);
+
+    const initialBlending = 1.0 / 10000.0;
 
     uniforms = {
         resolution: {value: new THREE.Vector4()},
@@ -36,6 +39,7 @@ function init() {
         u_rotationY: {value: 0.0},
         cameraAdjPos: {value: new THREE.Vector3(0.0, 0.0, 0.0)},
         matcap: {value: new THREE.TextureLoader().load('../imgs/metalMatcap.jpg')},
+        blending: {value: initialBlending},
       }
 
     onWindowResize();
@@ -60,9 +64,28 @@ function init() {
                 });
         });
 
+    rangeEvents();
     mouseMoveEvents();
     mouseWheelEvents();
     window.addEventListener('resize', onWindowResize, false);
+}
+
+
+function rangeEvents() {
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Get the range slider element by its ID
+        const blendingRange = document.getElementById('blendingRange');
+
+        if (blendingRange) {
+            // Add an event listener to handle changes to the slider
+            blendingRange.addEventListener('input', (event) => {
+                // Get the current value of the slider
+                uniforms.blending.value = parseFloat(event.target.value) / 10000.0;
+            });
+        } else {
+            console.error('Element with ID "blendingRange" not found.');
+        }
+    });
 }
 
 
@@ -113,8 +136,10 @@ function mouseWheelEvents() {
 
 
 function onWindowResize() {
-    width = window.innerWidth;
-    height = window.innerHeight;
+    const container = document.getElementById('bridgeContainer');
+    width = container.clientWidth;
+    height = container.clientHeight;
+
     renderer.setSize(width, height);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
