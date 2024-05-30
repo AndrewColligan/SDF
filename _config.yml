@@ -1,0 +1,12 @@
+title: Andrew Colligan
+email: andrew.colligan.ai@gmail.com
+description: A web page of random sign distance function (SDF) experiments using three.js and GLSL.
+
+show_downloads: true
+
+repository: "AndrewColligan/AndrewColligan.github.io/sdf"
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
