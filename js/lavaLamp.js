@@ -30,10 +30,10 @@ function init() {
     onWindowResize();
     const geometry = new THREE.PlaneGeometry(2, 2);
 
-    fetch('shaders/vertexLavaLamp.glsl')
+    fetch('../shaders/vertexLavaLamp.glsl')
         .then(response => response.text())
         .then(vertexShader => {
-            fetch('shaders/fragmentLavaLamp.glsl')
+            fetch('../shaders/fragmentLavaLamp.glsl')
                 .then(response => response.text())
                 .then(fragmentShader => {
                     material = new THREE.ShaderMaterial({

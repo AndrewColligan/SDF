@@ -30,10 +30,10 @@ function init() {
     onWindowResize();
     const geometry = new THREE.PlaneGeometry(2, 2);
 
-    fetch('shaders/vertexMouse.glsl')
+    fetch('../shaders/vertexMouse.glsl')
         .then(response => response.text())
         .then(vertexShader => {
-            fetch('shaders/fragmentMouse.glsl')
+            fetch('../shaders/fragmentMouse.glsl')
                 .then(response => response.text())
                 .then(fragmentShader => {
                     material = new THREE.ShaderMaterial({

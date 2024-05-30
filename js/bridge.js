@@ -35,16 +35,16 @@ function init() {
         u_rotationX: {value: 0.0},
         u_rotationY: {value: 0.0},
         cameraAdjPos: {value: new THREE.Vector3(0.0, 0.0, 0.0)},
-        matcap: {value: new THREE.TextureLoader().load('./img/metalMatcap.jpg')},
+        matcap: {value: new THREE.TextureLoader().load('../imgs/metalMatcap.jpg')},
       }
 
     onWindowResize();
     const geometry = new THREE.PlaneGeometry(2, 2);
 
-    fetch('shaders/vertexTruss.glsl')
+    fetch('../shaders/vertexTruss.glsl')
         .then(response => response.text())
         .then(vertexShader => {
-            fetch('shaders/fragmentBridge.glsl')
+            fetch('../shaders/fragmentBridge.glsl')
                 .then(response => response.text())
                 .then(fragmentShader => {
                     material = new THREE.ShaderMaterial({

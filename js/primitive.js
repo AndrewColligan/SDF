@@ -43,10 +43,10 @@ function init() {
     onWindowResize();
     const geometry = new THREE.PlaneGeometry(2, 2);
 
-    fetch('shaders/vertexPrimitive.glsl')
+    fetch('../shaders/vertexPrimitive.glsl')
         .then(response => response.text())
         .then(vertexShader => {
-            fetch('shaders/fragmentPrimitive.glsl')
+            fetch('../shaders/fragmentPrimitive.glsl')
                 .then(response => response.text())
                 .then(fragmentShader => {
                     material = new THREE.ShaderMaterial({
