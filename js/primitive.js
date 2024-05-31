@@ -95,15 +95,17 @@ function dropdownEvents() {
 
 function mouseMoveEvents() {
     document.addEventListener('mousedown', (event) => {
-        if (event.button === 1) {  // Left mouse button
-            isRotating = true;
-        } else if (event.button === 0) {  // Middle mouse button
-            isRotating = true;
-        } else if (event.button === 2) {  // Right mouse button
-            isPanning = true;
+        if (event.target.closest('#sceneRow')) {
+            if (event.button === 0) {  // Left mouse button
+                isRotating = true;
+            } else if (event.button === 1) {  // Middle mouse button
+                isRotating = true;
+            } else if (event.button === 2) {  // Right mouse button
+                isPanning = true;
+            }
+            lastMouseX = event.clientX;
+            lastMouseY = event.clientY;
         }
-        lastMouseX = event.clientX;
-        lastMouseY = event.clientY;
     });
 
     document.addEventListener('mouseup', () => {
