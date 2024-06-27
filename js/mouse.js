@@ -13,7 +13,8 @@ function init() {
     scene = new THREE.Scene();
     clock = new THREE.Clock();
 
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer(antialias=true);
+    renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize(width, height);
     document.body.appendChild(renderer.domElement);
 

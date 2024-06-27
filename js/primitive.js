@@ -19,7 +19,8 @@ function init() {
     scene = new THREE.Scene();
     clock = new THREE.Clock();
 
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer(antialias=true);
+    renderer.setPixelRatio( window.devicePixelRatio );
     const container = document.getElementById('threejs-container');
     width = container.clientWidth;
     height = container.clientHeight;
