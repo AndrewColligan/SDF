@@ -15,7 +15,7 @@ animate();
 
 
 function init() {
-    renderer = new THREE.WebGLRenderer(antialias=true);
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio( window.devicePixelRatio );
     const container = document.getElementById('bridgeContainer');
     width = container.clientWidth;
